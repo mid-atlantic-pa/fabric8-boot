@@ -1,0 +1,15 @@
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata: 
+  labels:
+    run: gs-spring-boot-docker
+  name: gs-spring-boot-docker
+  namespace: default
+spec: 
+  virtualhost:
+    fqdn: gs-spring-boot-docker.contour.bissau-pks-cluster-2.pks.bissau.toolsmith.winterfell.live
+  routes: 
+    - match: /
+      services: 
+        - name: gs-spring-boot-docker
+          port: 80

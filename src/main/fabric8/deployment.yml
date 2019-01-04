@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${project.artifactId}
+  labels:
+    run: ${project.artifactId}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: ${project.artifactId}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: ${project.artifactId}
+    spec:
+      containers:
+      - image: ${docker.image.prefix}/${project.artifactId}:latest
+        name: ${project.artifactId}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+

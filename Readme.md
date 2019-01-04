@@ -23,3 +23,19 @@
 ```
 
 1. Update ingresroute.xml with the fully qualified domain name to your contour ingress  url
+
+## Usage
+
+### Deploy
+
+`mvn fabric8:deploy` will package the app, create docker image, push to harbor, generate the k8s resources and apply them to pks
+
+### Undeploy
+
+`mvn fabric8:undeploy` will delete the resources on pks
+
+> must have previously built or else the resources won't be in target directory to use for deletion.  Also, do not use clean goal as that will delete the resources in target.
+
+### Ingress Route
+
+`kubectl apply -f ./ingressroute.xml` will apply the ingress route.  As of now, we can not gerate this resource using fabric8.

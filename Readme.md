@@ -25,11 +25,14 @@
 3. Update ingresroute.xml with the fully qualified domain name to your contour ingress  url
 
 ## Contour Setup
+
 [Heptio Contor](https://github.com/heptio/contour) is used for ingress.  Setup with the following command.
 
 ```bash
-kubectl apply -f https://j.hept.io/contour-kuard-example
+kubectl apply -f https://j.hept.io/contour-deployment-rbac
 ```
+
+Get the external IP address of the contour ingress service.  Then create a wildcard dns entry pointing to the service external IP.
 
 ## Usage
 
